@@ -1,4 +1,4 @@
-package com.tpk;
+package com.edison;
 
 import android.app.Application;
 import android.util.Log;

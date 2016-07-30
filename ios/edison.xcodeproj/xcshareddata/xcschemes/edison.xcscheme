@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "tpk.app"
-               BlueprintName = "tpk"
-               ReferencedContainer = "container:tpk.xcodeproj">
+               BuildableName = "edison.app"
+               BlueprintName = "edison"
+               ReferencedContainer = "container:edison.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "tpkTests.xctest"
-               BlueprintName = "tpkTests"
-               ReferencedContainer = "container:tpk.xcodeproj">
+               BuildableName = "edisonTests.xctest"
+               BlueprintName = "edisonTests"
+               ReferencedContainer = "container:edison.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "tpkTests.xctest"
-               BlueprintName = "tpkTests"
-               ReferencedContainer = "container:tpk.xcodeproj">
+               BuildableName = "edisonTests.xctest"
+               BlueprintName = "edisonTests"
+               ReferencedContainer = "container:edison.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "tpk.app"
-            BlueprintName = "tpk"
-            ReferencedContainer = "container:tpk.xcodeproj">
+            BuildableName = "edison.app"
+            BlueprintName = "edison"
+            ReferencedContainer = "container:edison.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "tpk.app"
-            BlueprintName = "tpk"
-            ReferencedContainer = "container:tpk.xcodeproj">
+            BuildableName = "edison.app"
+            BlueprintName = "edison"
+            ReferencedContainer = "container:edison.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "tpk.app"
-            BlueprintName = "tpk"
-            ReferencedContainer = "container:tpk.xcodeproj">
+            BuildableName = "edison.app"
+            BlueprintName = "edison"
+            ReferencedContainer = "container:edison.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
