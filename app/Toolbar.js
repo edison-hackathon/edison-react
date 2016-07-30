@@ -7,8 +7,8 @@ class Toolbar extends Component {
             <View>
                 <View style={s.toolbar}>
                     <Text style={s.toolbarButton}>Back</Text>
-                    <Text style={s.toolbarTitle}>Edison cloud client</Text>
-                    <Text style={s.toolbarButton}/>
+                    <Text style={s.toolbarTitle}>Edison sensors</Text>
+                    <Text style={s.toolbarButton}>Refresh</Text>
                 </View>
             </View>
         );
@@ -23,7 +23,7 @@ const s = StyleSheet.create({
         flexDirection: 'row'
     },
     toolbarButton: {
-        width: 50,
+        width: 80,
         color: '#fff',
         textAlign: 'center'
     },
@@ -36,4 +36,4 @@ const s = StyleSheet.create({
 });
 
 
-module.exports = {Toolbar};
+export default Toolbar;

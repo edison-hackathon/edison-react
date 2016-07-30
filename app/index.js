@@ -1,16 +1,49 @@
 import React, {Component} from "react";
 import {AppRegistry, StyleSheet, Text, View, ScrollView} from "react-native";
-import {Toolbar} from './Toolbar';
-import {Map} from './Map';
+import {Provider} from "react-redux";
+import {createStore, bindActionCreators} from 'redux';
+import Toolbar from "./Toolbar";
+import Map from "./Map";
+import List from "./List";
+import * as actions from './actions';
+import reducers from './reducers';
 
-class ScrolledContainter extends Component {
+// init
+let store = createStore(reducers);
+
+// bindActionCreators(actions, store.dispatch);
+
+
+
+// test
+console.log(store.getState());
+
+let unsubscriber = store.subscribe(() =>
+    console.log(store.getState())
+);
+
+store.dispatch(actions.viewSensor('9092:3234:3434:ff00:3307:0030'));
+store.dispatch(actions.viewList());
+
+unsubscriber();
+
+
+
+// App
+class Content extends Component {
     render() {
         return (
-            <View style={styles.scrolledContainter}>
-                <ScrollView>
-                    {this.props.children}
-                </ScrollView>
+            <View style={styles.content}>
+                {this.props.children}
             </View>
+        )
+    }
+}
+
+class Footer extends Component {
+    render() {
+        return (
+            <View style={styles.footer}/>
         )
     }
 }
@@ -19,35 +52,29 @@ class ScrolledContainter extends Component {
 class App extends Component {
     render() {
         return (
-            <View style={styles.mainContainer}>
-                <Toolbar/>
-                <Map/>
-                <View style={{flex: 1, backgroundColor: "green", padding: 3}}>
-                    <ScrolledContainter>
-                        <Text style={styles.welcome}>
-                            Welcome to React Native!
-                        </Text>
-                        <Text style={styles.welcome}>
-                            Welcome to React Native!
-                        </Text>
-                        <Text style={styles.welcome}>
-                            Welcome to React Native!
-                        </Text>
-                        <Text style={styles.welcome}>
-                            Welcome to React Native!
-                        </Text>
-                        <Text style={styles.welcome}>
-                            Welcome to React Native!
-                        </Text>
-                        <Text style={styles.welcome}>
-                            Welcome to React Native!
-                        </Text>
-                        <Text style={styles.welcome}>
-                            Welcome to React Native!
-                        </Text>
-                    </ScrolledContainter>
+            <Provider store={store}>
+                <View style={styles.mainContainer}>
+                    <Toolbar/>
+                    <Map/>
+                    <Content>
+                        <List>
+                            <Text style={styles.welcome}>
+                                Welcome to React Native!
+                            </Text>
+                            <Text style={styles.welcome}>
+                                Welcome to React Native!
+                            </Text>
+                            <Text style={styles.welcome}>
+                                Welcome to React Native!
+                            </Text>
+                            <Text style={styles.welcome}>
+                                Welcome to React Native!
+                            </Text>
+                        </List>
+                    </Content>
+                    <Footer/>
                 </View>
-            </View>
+            </Provider>
         );
     }
 }
@@ -64,22 +91,15 @@ const styles = StyleSheet.create({
         right: 0,
         backgroundColor: "#ff6600"
     },
-    // sdf
-    // scrolledContainter
-    scrolledContainter: {
+    content: {
         flex: 1,
-        flexDirection: 'column', // or row
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#F5FCFF',
+        flexDirection: 'column',
+        backgroundColor: "green",
+        padding: 3
     },
-    // sdf
-    container: {
-        flex: 0,
-        flexDirection: 'column', // or row
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#F5FCFF',
+    footer: {
+        height: 10,
+        backgroundColor: 'purple'
     },
     welcome: {
         fontSize: 20,

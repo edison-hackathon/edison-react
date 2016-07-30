@@ -22,5 +22,4 @@ const s = StyleSheet.create({
     }
 });
 
-
-module.exports = {Map};
+export default Map;
