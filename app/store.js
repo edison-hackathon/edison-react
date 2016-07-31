@@ -52,14 +52,23 @@ let initialState = {
         {
             mac: '9092:3234:3434:ff00:3307:0030',
             temperature: 27.1,
+            humidity: 39,
+            lat: 55.751271,
+            lon: 37.601955
         },
         {
             mac: '9092:3234:3434:ff00:3307:0031',
             temperature: 30.2,
+            humidity: 70,
+            lat: 55.731271,
+            lon: 37.631955
         },
         {
             mac: '9092:3234:3434:ff00:3307:0032',
             temperature: 74.7,
+            humidity: 39.20,
+            lat: 55.851271,
+            lon: 37.701955
         },
     ],
 };
