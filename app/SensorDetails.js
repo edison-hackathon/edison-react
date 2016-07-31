@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import List from "./List";
 import ListButton from "./ListButton";
 import {viewSensorAction} from "./actions";
+import {getCurrentSensor} from "./store";
 
 // visible component
 class SensorsDetails extends Component {
@@ -19,7 +20,7 @@ class SensorsDetails extends Component {
                 <Text style={styles.mac}>{"MAC:\n" + s.mac}</Text>
                 <List>
                     <ListButton onClick={onClick}>
-                        {"Temperature:\n" + s.temperature + " °C"}
+                        {"Temperature:\n" + s.temperature}
                     </ListButton>
 
                     <ListButton onClick={onClick}>
@@ -50,25 +51,6 @@ const styles = StyleSheet.create({
         backgroundColor: "gray",
     }
 });
-
-function getCurrentSensor(state) {
-    if (!state.currentSensor) {
-        return null;
-    }
-
-    let currentSensor = null;
-    state.sensors.forEach(function (sensor) {
-        if (sensor.mac == state.currentSensor) {
-            currentSensor = sensor;
-        }
-    });
-
-    if (!currentSensor) {
-        return null;
-    }
-
-    return currentSensor;
-}
 
 
 // container component

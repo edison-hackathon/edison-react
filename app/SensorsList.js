@@ -14,7 +14,7 @@ class SensorsList extends Component {
                         key={i}
                         onClick={() => this.props.onSensorClick(sensor.mac)}
                     >
-                        {sensor.mac + '\n' + sensor.temperature + ' °C'}
+                        {sensor.mac + '\n' + sensor.temperature}
                     </ListButton>
                 )}
             </List>

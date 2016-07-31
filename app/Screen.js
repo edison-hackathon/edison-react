@@ -2,11 +2,11 @@ import React, {Component, PropTypes} from "react";
 import {View, StyleSheet} from "react-native";
 import {connect} from "react-redux";
 import Toolbar from "./Toolbar";
-import Map from "./Map";
+import MapContainer from "./Map";
 import SensorsListContainer from "./SensorsList";
 import SensorDetails from "./SensorDetails";
 import {VIEW_LIST} from "./store";
-import {viewListAction, refreshDataAction} from './actions';
+import {viewListAction, refreshDataAction} from "./actions";
 
 class Screen extends Component {
 
@@ -23,7 +23,7 @@ class Screen extends Component {
         return (
             <View style={styles.container}>
                 <Toolbar showBack={false} onRefreshClick={this.props.onRefreshClick}/>
-                <Map/>
+                <MapContainer/>
                 <View style={styles.content}>
                     <SensorsListContainer/>
                 </View>
@@ -35,8 +35,9 @@ class Screen extends Component {
     renderSensor() {
         return (
             <View style={styles.container}>
-                <Toolbar showBack={true} onBackClick={this.props.onBackClick} onRefreshClick={this.props.onRefreshClick}/>
-                <Map/>
+                <Toolbar showBack={true} onBackClick={this.props.onBackClick}
+                         onRefreshClick={this.props.onRefreshClick}/>
+                <MapContainer/>
                 <View style={styles.content}>
                     <SensorDetails/>
                 </View>
@@ -71,7 +72,6 @@ const styles = StyleSheet.create({
 });
 
 
-
 function refreshAsync(dispatch) {
 
     // setTimeout(function() {
@@ -100,8 +100,8 @@ function refreshAsync(dispatch) {
             'Content-Type': 'application/json',
         }
     })
-        .then(function(response) {
-            response.json().then(function(json) {
+        .then(function (response) {
+            response.json().then(function (json) {
                 let sensors = json;
                 console.log(response);
                 console.log(sensors);
@@ -114,7 +114,7 @@ function refreshAsync(dispatch) {
                     lon: 37.631955
                 };
 
-                sensors = sensors.map(function(sensor) {
+                sensors = sensors.map(function (sensor) {
                     return {
                         ...def,
                         ...sensor
@@ -135,13 +135,17 @@ const ScreenContainter = connect(
     (state) => {
         console.log(state);
         return {
-            isListView: (state.view == VIEW_LIST)
+            isListView: (state.view == VIEW_LIST),
         }
     },
     (dispatch) => {
         return {
-            onBackClick: () => {dispatch(viewListAction())},
-            onRefreshClick: () => {refreshAsync(dispatch)},
+            onBackClick: () => {
+                dispatch(viewListAction())
+            },
+            onRefreshClick: () => {
+                refreshAsync(dispatch)
+            },
         }
     }
 )(Screen);

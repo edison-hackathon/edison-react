@@ -49,6 +49,26 @@ function sensors(state = [], action) {
 }
 
 
+export function getCurrentSensor(state) {
+    if (!state.currentSensor) {
+        return null;
+    }
+
+    let currentSensor = null;
+    state.sensors.forEach(function (sensor) {
+        if (sensor.mac == state.currentSensor) {
+            currentSensor = sensor;
+        }
+    });
+
+    if (!currentSensor) {
+        return null;
+    }
+
+    return currentSensor;
+}
+
+
 let initialState = {
     view: VIEW_LIST,
     currentSensor: null,
