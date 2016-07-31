@@ -75,7 +75,7 @@ let initialState = {
     sensors: [
         {
             mac: '9092:3234:3434:ff00:3307:0030',
-            temperature: 27.1,
+            temperature: '27.1 ºC',
             humidity: 39,
             speed: 2.4,
             lat: 55.751271,
@@ -83,7 +83,7 @@ let initialState = {
         },
         {
             mac: '9092:3234:3434:ff00:3307:0031',
-            temperature: 30.2,
+            temperature: '30.2 ºC',
             humidity: 70,
             speed: 7.58,
             lat: 55.731271,
@@ -91,7 +91,7 @@ let initialState = {
         },
         {
             mac: '9092:3234:3434:ff00:3307:0032',
-            temperature: 74.7,
+            temperature: '74.7 ºC',
             humidity: 39.20,
             speed: 0.01,
             lat: 55.851271,

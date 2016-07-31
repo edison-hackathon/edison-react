@@ -15,45 +15,56 @@ const LONGITUDE_DELTA = 0.0421;
 
 class Map extends Component {
 
-    renderObjs() {
+    setRegion(region) {
+        if (this._zimap) {
+            let latDelta = LATITUDE_DELTA;
+            let lonDelta = LONGITUDE_DELTA;
 
+            this._zimap.animateToRegion(
+                {
+                    latitude: region.latitude,
+                    longitude: region.longitude,
+                    latitudeDelta: latDelta,
+                    longitudeDelta: lonDelta,
+                }
+            );
+        }
+    }
+
+    renderObjs() {
         if (this.props.sensor) {
-            sen = this.props.sensor;
-            console.log({latitude: sen.lat, longitude: sen.lon});
+            let sen = this.props.sensor;
+            let coords = {latitude: sen.lat, longitude: sen.lon};
+
+            console.log(coords);
+            this.setRegion(coords);
             return (
                 <MapView.Marker
-                    coordinate={{latitude: sen.lat, longitude: sen.lon}}
+                    coordinate={coords}
                     title={sen.mac}
                 />
             )
         }
 
-        return this.props.sensors.map(function(sen, i) {
+        return this.props.sensors.map(function (sen, i) {
+            let coords = {latitude: sen.lat, longitude: sen.lon};
             return (
                 <MapView.Marker
                     key={i}
-                    coordinate={{latitude: sen.lat, longitude: sen.lon}}
+                    coordinate={coords}
                     title={sen.mac}
                 />
             )
         });
-
-        // return this.state.objs.map(function (o) {
-        //     return (
-        //         <MapView.Marker
-        //             coordinate={{latitude: o.lat, longitude: o.lon}}
-        //             title={o.title}
-        //             key={o.id}
-        //         />
-        //     )
-        // });
     }
 
     render() {
         return (
             <View style={s.view}>
                 <MapView
-                    ref={(ref) => {this._zimap = ref}}
+                    ref={(ref) => {
+                        this._zimap = ref
+                    }}
                     style={s.map}
                     initialRegion={{
                         latitude: LATITUDE,
