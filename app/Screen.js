@@ -70,6 +70,67 @@ const styles = StyleSheet.create({
     }
 });
 
+
+
+function refreshAsync(dispatch) {
+
+    // setTimeout(function() {
+    //
+    //     dispatch(refreshDataAction([
+    //         {
+    //             mac: 'new',
+    //             temperature: 30.2,
+    //             humidity: 70,
+    //             speed: 7.58,
+    //             lat: 55.731271,
+    //             lon: 37.631955
+    //         }
+    //     ]));
+    //
+    // }, 1000);
+    // return;
+
+
+    console.log('fetch...');
+    fetch("http://localhost:8080/api/v1/devices?offset=0&limit=10", {
+        // mode: "no-cors",
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+    })
+        .then(function(response) {
+            response.json().then(function(json) {
+                let sensors = json;
+                console.log(response);
+                console.log(sensors);
+                let def = {
+                    mac: '9092:3234:3434:ff00:3307:0031',
+                    temperature: 30.2,
+                    humidity: 70,
+                    speed: 7.58,
+                    lat: 55.731271,
+                    lon: 37.631955
+                };
+
+                sensors = sensors.map(function(sensor) {
+                    return {
+                        ...def,
+                        ...sensor
+                    }
+                });
+
+                console.log(sensors);
+                dispatch(refreshDataAction(sensors));
+            })
+        })
+        .catch(function (error) {
+            console.log(error);
+            dispatch(viewListAction())
+        });
+}
+
 const ScreenContainter = connect(
     (state) => {
         console.log(state);
@@ -80,7 +141,7 @@ const ScreenContainter = connect(
     (dispatch) => {
         return {
             onBackClick: () => {dispatch(viewListAction())},
-            onRefreshClick: () => {dispatch(refreshDataAction())},
+            onRefreshClick: () => {refreshAsync(dispatch)},
         }
     }
 )(Screen);

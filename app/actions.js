@@ -23,9 +23,10 @@ export function viewSensorAction(currentSensore) {
     }
 }
 
-export function refreshDataAction() {
+export function refreshDataAction(sensors) {
     // todo: async
     return {
-        type: A_REFRESH
+        type: A_REFRESH,
+        sensors: sensors
     }
 }
