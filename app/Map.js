@@ -10,10 +10,21 @@ const ASPECT_RATIO = width / height;
 
 const LATITUDE = 55.751271;
 const LONGITUDE = 37.601955;
-const LATITUDE_DELTA = 0.0422;
-const LONGITUDE_DELTA = 0.0421;
+const LATITUDE_DELTA = 0.0022;
+const LONGITUDE_DELTA = 0.0021;
 
 class Map extends Component {
+
+    componentDidUpdate() {
+        if (this.props.sensor) {
+            let sen = this.props.sensor;
+            let coords = {latitude: sen.lat, longitude: sen.lon};
+
+            console.log(coords);
+            this.setRegion(coords);
+        }
+
+    }
 
     setRegion(region) {
         if (this._zimap) {
@@ -37,7 +48,7 @@ class Map extends Component {
             let coords = {latitude: sen.lat, longitude: sen.lon};
 
             console.log(coords);
-            this.setRegion(coords);
+            // this.setRegion(coords);
             return (
                 <MapView.Marker
                     coordinate={coords}
