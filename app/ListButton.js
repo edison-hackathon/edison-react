@@ -20,7 +20,7 @@ const s = StyleSheet.create({
     welcome: {
         fontSize: 20,
         textAlign: 'left',
-        margin: 20,
+        padding: 20,
     },
 });
 
