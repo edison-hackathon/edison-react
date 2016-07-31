@@ -6,20 +6,6 @@ import {A_VIEW_LIST, A_VIEW_SENSOR} from "./actions";
 const VIEW_LIST = 'VIEW_LIST';
 const VIEW_SENSOR = 'VIEW_SENSOR';
 
-let initialSensors = [
-    {
-        mac: '9092:3234:3434:ff00:3307:0030',
-        t: 27.1,
-    },
-    {
-        mac: '9092:3234:3434:ff00:3307:0031',
-        t: 30.2,
-    },
-    {
-        mac: '9092:3234:3434:ff00:3307:0032',
-        t: 74.7,
-    },
-];
 
 function view(state = VIEW_LIST, action) {
     switch (action.type) {
@@ -51,7 +37,7 @@ function currentSensor(state = null, action) {
     }
 }
 
-function sensors(state = initialSensors, action) {
+function sensors(state = [], action) {
     switch (action.type) {
         default:
             return state
@@ -59,8 +45,31 @@ function sensors(state = initialSensors, action) {
 }
 
 
-export default combineReducers({
+let initialState = {
+    view: VIEW_LIST,
+    currentSensor: null,
+    sensors: [
+        {
+            mac: '9092:3234:3434:ff00:3307:0030',
+            temperature: 27.1,
+        },
+        {
+            mac: '9092:3234:3434:ff00:3307:0031',
+            temperature: 30.2,
+        },
+        {
+            mac: '9092:3234:3434:ff00:3307:0032',
+            temperature: 74.7,
+        },
+    ],
+};
+
+const reducers = combineReducers({
     view,
     currentSensor,
     sensors
 });
+
+const store = createStore(reducers, initialState);
+
+export default store;

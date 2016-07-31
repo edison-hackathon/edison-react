@@ -10,20 +10,20 @@ export const A_VIEW_SENSOR = 'A_VIEW_SENSOR';
 export const A_REFRESH = 'A_REFRESH';
 
 
-export function viewList() {
+export function viewListAction() {
     return {
         type: A_VIEW_LIST
     }
 }
 
-export function viewSensor(currentSensore) {
+export function viewSensorAction(currentSensore) {
     return {
         type: A_VIEW_SENSOR,
         currentSensor: currentSensore
     }
 }
 
-export function refreshData() {
+export function refreshDataAction() {
     // todo: async
     return {
         type: A_REFRESH

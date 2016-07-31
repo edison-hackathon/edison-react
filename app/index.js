@@ -1,33 +1,11 @@
 import React, {Component} from "react";
 import {AppRegistry, StyleSheet, Text, View, ScrollView} from "react-native";
 import {Provider} from "react-redux";
-import {createStore, bindActionCreators} from 'redux';
+import {createStore} from "redux";
 import Toolbar from "./Toolbar";
 import Map from "./Map";
-import List from "./List";
-import * as actions from './actions';
-import reducers from './reducers';
-
-// init
-let store = createStore(reducers);
-
-// bindActionCreators(actions, store.dispatch);
-
-
-
-// test
-console.log(store.getState());
-
-let unsubscriber = store.subscribe(() =>
-    console.log(store.getState())
-);
-
-store.dispatch(actions.viewSensor('9092:3234:3434:ff00:3307:0030'));
-store.dispatch(actions.viewList());
-
-unsubscriber();
-
-
+import SensorsListContainer from "./SensorsList";
+import store from "./store";
 
 // App
 class Content extends Component {
@@ -57,20 +35,7 @@ class App extends Component {
                     <Toolbar/>
                     <Map/>
                     <Content>
-                        <List>
-                            <Text style={styles.welcome}>
-                                Welcome to React Native!
-                            </Text>
-                            <Text style={styles.welcome}>
-                                Welcome to React Native!
-                            </Text>
-                            <Text style={styles.welcome}>
-                                Welcome to React Native!
-                            </Text>
-                            <Text style={styles.welcome}>
-                                Welcome to React Native!
-                            </Text>
-                        </List>
+                        <SensorsListContainer/>
                     </Content>
                     <Footer/>
                 </View>
