@@ -3,8 +3,8 @@ import {combineReducers, createStore} from "redux";
 import {A_VIEW_LIST, A_VIEW_SENSOR} from "./actions";
 
 // view values
-const VIEW_LIST = 'VIEW_LIST';
-const VIEW_SENSOR = 'VIEW_SENSOR';
+export const VIEW_LIST = 'VIEW_LIST';
+export const VIEW_SENSOR = 'VIEW_SENSOR';
 
 
 function view(state = VIEW_LIST, action) {

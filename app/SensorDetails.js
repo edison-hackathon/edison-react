@@ -5,7 +5,7 @@ import ListButton from "./ListButton";
 import {viewSensorAction} from "./actions";
 
 // visible component
-class SensorsList extends Component {
+class SensorsDetails extends Component {
     render() {
         return (
             <List>
@@ -14,7 +14,7 @@ class SensorsList extends Component {
                         key={i}
                         onClick={() => this.props.onSensorClick(sensor.mac)}
                     >
-                        {sensor.mac + '\n' + sensor.temperature + ' °C'}
+                        {" details" + sensor.mac + '\n' + sensor.temperature + ' °C'}
                     </ListButton>
                 )}
             </List>
@@ -22,7 +22,7 @@ class SensorsList extends Component {
     }
 }
 
-SensorsList.propTypes = {
+SensorsDetails.propTypes = {
     sensors: PropTypes.arrayOf(PropTypes.shape({
         mac: PropTypes.string.isRequired,
         temperature: PropTypes.float,
@@ -32,7 +32,7 @@ SensorsList.propTypes = {
 
 
 // container component
-const SensorsListContainer = connect(
+const SensorsDetailsContainer = connect(
     // returns props as data from global state
     (state) => {
         return {
@@ -47,7 +47,7 @@ const SensorsListContainer = connect(
             }
         }
     }
-)(SensorsList);
+)(SensorsDetails);
 
 
-export default SensorsListContainer;
+export default SensorsDetailsContainer;
